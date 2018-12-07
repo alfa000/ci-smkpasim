@@ -74,7 +74,7 @@
             <div class="icon">
               <i class="glyphicon glyphicon-user"></i>
             </div>
-            <a href="<?=site_url('backend/#'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?=site_url('backend/pendaftaran'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 

@@ -1,92 +1,94 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Inang: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2018 pada 01.31
--- Versi Server: 5.5.27
--- Versi PHP: 5.4.7
+-- Host: 127.0.0.1
+-- Generation Time: Dec 07, 2018 at 03:18 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Basis data: `smkpasim`
+-- Database: `smkpasim`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konten`
+-- Table structure for table `pendaftaran`
 --
 
-CREATE TABLE IF NOT EXISTS `konten` (
-  `id_konten` int(11) NOT NULL AUTO_INCREMENT,
-  `kategori` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
-  PRIMARY KEY (`id_konten`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data untuk tabel `konten`
---
-
-INSERT INTO `konten` (`id_konten`, `kategori`, `deskripsi`) VALUES
-(1, 'Profile', '<p>ini profile</p>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(2, 'Visi', '<p>alsdnlaksndlaknslkdnalskndlaksndlaknsdlakn</p>\r\n');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pendaftaran`
---
-
-CREATE TABLE IF NOT EXISTS `pendaftaran` (
+CREATE TABLE `pendaftaran` (
   `no_reg` varchar(25) NOT NULL,
   `nisn` varchar(25) NOT NULL,
   `nm_siswa` varchar(100) NOT NULL,
-  `asal_sekolah` varchar(50) NOT NULL,
-  `jurusan` varchar(50) NOT NULL,
+  `id_jurusan` varchar(50) NOT NULL,
   `jenkel` enum('L','P') NOT NULL,
   `tgl_lahir` date NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `agama` varchar(100) NOT NULL,
-  `foto` varchar(100) NOT NULL,
+  `alamat_siswa` text NOT NULL,
+  `kode_pos_siswa` varchar(10) NOT NULL,
+  `email_siswa` varchar(225) NOT NULL,
+  `hp_siswa` varchar(15) NOT NULL,
+  `foto_siswa` varchar(100) NOT NULL,
   `tgl_daftar` date NOT NULL,
   `no_ijazah` varchar(100) NOT NULL,
   `no_skhun` varchar(100) NOT NULL,
-  PRIMARY KEY (`no_reg`)
+  `verifikasi` enum('N','Y') NOT NULL,
+  `nm_ayah` varchar(225) NOT NULL,
+  `pekerjaan_ayah` varchar(225) NOT NULL,
+  `pendidikan_ayah` varchar(10) NOT NULL,
+  `nm_ibu` varchar(225) NOT NULL,
+  `pekerjaan_ibu` varchar(225) NOT NULL,
+  `pendidikan_ibu` varchar(10) NOT NULL,
+  `alamat_ortu` text NOT NULL,
+  `kode_pos_ortu` varchar(10) NOT NULL,
+  `hp_ortu` varchar(15) NOT NULL,
+  `rat_rangking` varchar(10) NOT NULL,
+  `rat_nilai_ijazah` double NOT NULL,
+  `beasiswa` varchar(225) NOT NULL,
+  `beasiswa_thn` year(4) NOT NULL,
+  `minat` varchar(225) NOT NULL,
+  `sekolah_asal` varchar(225) NOT NULL,
+  `thn_msk_sekolah_asal` year(4) NOT NULL,
+  `thn_lulus_sekolah_asal` year(4) NOT NULL,
+  `alamat_sekolah_asal` text NOT NULL,
+  `dapat_informasi` varchar(225) NOT NULL,
+  `ijazah` varchar(225) NOT NULL,
+  `kk` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pendaftaran`
+-- Dumping data for table `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`no_reg`, `nisn`, `nm_siswa`, `asal_sekolah`, `jurusan`, `jenkel`, `tgl_lahir`, `tempat_lahir`, `agama`, `foto`, `tgl_daftar`, `no_ijazah`, `no_skhun`) VALUES
-('PSB1810001', '123456', 'cecep jepret', '', '', '', '0000-00-00', '', '', '', '2018-10-21', '', '');
+INSERT INTO `pendaftaran` (`no_reg`, `nisn`, `nm_siswa`, `id_jurusan`, `jenkel`, `tgl_lahir`, `tempat_lahir`, `agama`, `alamat_siswa`, `kode_pos_siswa`, `email_siswa`, `hp_siswa`, `foto_siswa`, `tgl_daftar`, `no_ijazah`, `no_skhun`, `verifikasi`, `nm_ayah`, `pekerjaan_ayah`, `pendidikan_ayah`, `nm_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `alamat_ortu`, `kode_pos_ortu`, `hp_ortu`, `rat_rangking`, `rat_nilai_ijazah`, `beasiswa`, `beasiswa_thn`, `minat`, `sekolah_asal`, `thn_msk_sekolah_asal`, `thn_lulus_sekolah_asal`, `alamat_sekolah_asal`, `dapat_informasi`, `ijazah`, `kk`) VALUES
+('PSB1811001', '01273847238472', 'Adnan Al-fariri Rahmat', '11', 'L', '2018-12-31', 'Sukabumi', 'Islam', 'jl.pelabuhan 2 km 7 lembursitu rt 01 rw 05 sukabumi jawa barataaaaaaaaaaaaaaaaaaaaaaaaaaa', '10', 'asdasdasd@mail.com', '01271', 'foto_siswa-PSB1811001.png', '2018-11-03', '1029', '10298', 'N', 'Ayah', 'pekerjaan ayah', 'SMA', 'ibu', 'pekerjaan ibu', 'SMP', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '21', '212', '1-5', 10, 'prestasi', 2001, 'Seni', 'Smp 3', 2001, 2010, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Brosur', 'ijazah-PSB1811001.png', 'kk-PSB1811001.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `setup_slide`
+-- Table structure for table `setup_slide`
 --
 
-CREATE TABLE IF NOT EXISTS `setup_slide` (
-  `id_slide` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `setup_slide` (
+  `id_slide` int(5) NOT NULL,
   `judul` varchar(30) NOT NULL,
   `gambar` varchar(250) NOT NULL,
-  `deskripsi` text NOT NULL,
-  PRIMARY KEY (`id_slide`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  `deskripsi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `setup_slide`
+-- Dumping data for table `setup_slide`
 --
 
 INSERT INTO `setup_slide` (`id_slide`, `judul`, `gambar`, `deskripsi`) VALUES
@@ -99,10 +101,10 @@ INSERT INTO `setup_slide` (`id_slide`, `judul`, `gambar`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbberita`
+-- Table structure for table `tbberita`
 --
 
-CREATE TABLE IF NOT EXISTS `tbberita` (
+CREATE TABLE `tbberita` (
   `id_berita` char(10) NOT NULL,
   `id_ktg_berita` int(5) NOT NULL,
   `tgl_input` date NOT NULL,
@@ -110,12 +112,11 @@ CREATE TABLE IF NOT EXISTS `tbberita` (
   `judul` varchar(100) NOT NULL,
   `konten` text NOT NULL,
   `slug` varchar(200) NOT NULL,
-  `iduser` int(5) NOT NULL,
-  PRIMARY KEY (`id_berita`)
+  `iduser` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbberita`
+-- Dumping data for table `tbberita`
 --
 
 INSERT INTO `tbberita` (`id_berita`, `id_ktg_berita`, `tgl_input`, `gambar`, `judul`, `konten`, `slug`, `iduser`) VALUES
@@ -127,18 +128,17 @@ INSERT INTO `tbberita` (`id_berita`, `id_ktg_berita`, `tgl_input`, `gambar`, `ju
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbberita_kategori`
+-- Table structure for table `tbberita_kategori`
 --
 
-CREATE TABLE IF NOT EXISTS `tbberita_kategori` (
-  `id_ktg_berita` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbberita_kategori` (
+  `id_ktg_berita` int(5) NOT NULL,
   `kategori` varchar(25) NOT NULL,
-  `slug_kat` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_ktg_berita`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `slug_kat` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbberita_kategori`
+-- Dumping data for table `tbberita_kategori`
 --
 
 INSERT INTO `tbberita_kategori` (`id_ktg_berita`, `kategori`, `slug_kat`) VALUES
@@ -147,10 +147,10 @@ INSERT INTO `tbberita_kategori` (`id_ktg_berita`, `kategori`, `slug_kat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbgaleri`
+-- Table structure for table `tbgaleri`
 --
 
-CREATE TABLE IF NOT EXISTS `tbgaleri` (
+CREATE TABLE `tbgaleri` (
   `id_galeri` char(10) NOT NULL,
   `id_ktg_galeri` int(5) NOT NULL,
   `tgl` date NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `tbgaleri` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbgaleri`
+-- Dumping data for table `tbgaleri`
 --
 
 INSERT INTO `tbgaleri` (`id_galeri`, `id_ktg_galeri`, `tgl`, `deskripsi`, `gambar`) VALUES
@@ -181,17 +181,16 @@ INSERT INTO `tbgaleri` (`id_galeri`, `id_ktg_galeri`, `tgl`, `deskripsi`, `gamba
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbgaleri_kategori`
+-- Table structure for table `tbgaleri_kategori`
 --
 
-CREATE TABLE IF NOT EXISTS `tbgaleri_kategori` (
-  `id_ktg_galeri` int(5) NOT NULL AUTO_INCREMENT,
-  `kategori` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_ktg_galeri`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+CREATE TABLE `tbgaleri_kategori` (
+  `id_ktg_galeri` int(5) NOT NULL,
+  `kategori` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbgaleri_kategori`
+-- Dumping data for table `tbgaleri_kategori`
 --
 
 INSERT INTO `tbgaleri_kategori` (`id_ktg_galeri`, `kategori`) VALUES
@@ -202,20 +201,19 @@ INSERT INTO `tbgaleri_kategori` (`id_ktg_galeri`, `kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbguru`
+-- Table structure for table `tbguru`
 --
 
-CREATE TABLE IF NOT EXISTS `tbguru` (
+CREATE TABLE `tbguru` (
   `id_guru` char(10) NOT NULL,
   `nm_guru` varchar(35) NOT NULL,
   `alamat` text NOT NULL,
   `foto` varchar(300) NOT NULL,
-  `mapel` varchar(35) NOT NULL,
-  PRIMARY KEY (`id_guru`)
+  `mapel` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbguru`
+-- Dumping data for table `tbguru`
 --
 
 INSERT INTO `tbguru` (`id_guru`, `nm_guru`, `alamat`, `foto`, `mapel`) VALUES
@@ -227,38 +225,36 @@ INSERT INTO `tbguru` (`id_guru`, `nm_guru`, `alamat`, `foto`, `mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbhackel`
+-- Table structure for table `tbhackel`
 --
 
-CREATE TABLE IF NOT EXISTS `tbhackel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbhackel` (
+  `id` int(11) NOT NULL,
   `ip` varchar(50) NOT NULL,
   `protocol` varchar(50) NOT NULL,
   `port` varchar(50) NOT NULL,
   `agent` varchar(50) NOT NULL,
   `ref` varchar(50) NOT NULL,
   `cookie` varchar(50) NOT NULL,
-  `hostname` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `hostname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbjurusan`
+-- Table structure for table `tbjurusan`
 --
 
-CREATE TABLE IF NOT EXISTS `tbjurusan` (
-  `id_jurusan` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbjurusan` (
+  `id_jurusan` int(11) NOT NULL,
   `nm_jurusan` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
   `gambar` varchar(250) NOT NULL,
-  `slug` varchar(2000) NOT NULL,
-  PRIMARY KEY (`id_jurusan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `slug` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbjurusan`
+-- Dumping data for table `tbjurusan`
 --
 
 INSERT INTO `tbjurusan` (`id_jurusan`, `nm_jurusan`, `deskripsi`, `gambar`, `slug`) VALUES
@@ -272,21 +268,20 @@ INSERT INTO `tbjurusan` (`id_jurusan`, `nm_jurusan`, `deskripsi`, `gambar`, `slu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbprestasi`
+-- Table structure for table `tbprestasi`
 --
 
-CREATE TABLE IF NOT EXISTS `tbprestasi` (
-  `id_prestasi` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbprestasi` (
+  `id_prestasi` int(11) NOT NULL,
   `nm_prestasi` varchar(100) NOT NULL,
   `ke` varchar(100) NOT NULL,
   `gambar` text NOT NULL,
   `deskripsi` text NOT NULL,
-  `tgl_input` date NOT NULL,
-  PRIMARY KEY (`id_prestasi`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `tgl_input` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbprestasi`
+-- Dumping data for table `tbprestasi`
 --
 
 INSERT INTO `tbprestasi` (`id_prestasi`, `nm_prestasi`, `ke`, `gambar`, `deskripsi`, `tgl_input`) VALUES
@@ -298,19 +293,18 @@ INSERT INTO `tbprestasi` (`id_prestasi`, `nm_prestasi`, `ke`, `gambar`, `deskrip
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbprofil`
+-- Table structure for table `tbprofil`
 --
 
-CREATE TABLE IF NOT EXISTS `tbprofil` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbprofil` (
+  `id` int(11) NOT NULL,
   `judul` varchar(200) NOT NULL,
   `deskripsi` text NOT NULL,
-  `slug` varchar(2000) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `slug` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbprofil`
+-- Dumping data for table `tbprofil`
 --
 
 INSERT INTO `tbprofil` (`id`, `judul`, `deskripsi`, `slug`) VALUES
@@ -321,10 +315,10 @@ INSERT INTO `tbprofil` (`id`, `judul`, `deskripsi`, `slug`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbsiswa`
+-- Table structure for table `tbsiswa`
 --
 
-CREATE TABLE IF NOT EXISTS `tbsiswa` (
+CREATE TABLE `tbsiswa` (
   `nis` varchar(20) NOT NULL,
   `nisn` varchar(20) NOT NULL,
   `nm_siswa` varchar(100) NOT NULL,
@@ -334,55 +328,197 @@ CREATE TABLE IF NOT EXISTS `tbsiswa` (
   `tgl_lahir` date NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `agama` varchar(100) NOT NULL,
-  `foto` varchar(100) NOT NULL,
-  PRIMARY KEY (`nis`)
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbuser`
+-- Table structure for table `tbuser`
 --
 
-CREATE TABLE IF NOT EXISTS `tbuser` (
-  `iduser` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbuser` (
+  `iduser` int(5) NOT NULL,
   `u` varchar(20) NOT NULL,
   `p` varchar(250) NOT NULL,
   `namalengkap` varchar(35) NOT NULL,
   `level` enum('Admin','Super Admin') NOT NULL,
-  `log` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `log` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbuser`
+-- Dumping data for table `tbuser`
 --
 
 INSERT INTO `tbuser` (`iduser`, `u`, `p`, `namalengkap`, `level`, `log`) VALUES
-(5, 'admin', '3c59dc048e8850243be8079a5c74d079', 'Admin SMK PASIM', 'Super Admin', '2018-10-15 08:27:20');
+(5, 'admin', '71dcbc480100eb33e5f23e727c0eab09', 'Admin SMK PASIM', 'Super Admin', '2018-12-07 02:16:05');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbvideo`
+-- Table structure for table `tbvideo`
 --
 
-CREATE TABLE IF NOT EXISTS `tbvideo` (
-  `id_video` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbvideo` (
+  `id_video` int(5) NOT NULL,
   `title` varchar(50) NOT NULL,
   `link_video` varchar(250) NOT NULL,
-  `tgl` date NOT NULL,
-  PRIMARY KEY (`id_video`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `tgl` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbvideo`
+-- Dumping data for table `tbvideo`
 --
 
 INSERT INTO `tbvideo` (`id_video`, `title`, `link_video`, `tgl`) VALUES
-(3, 'Profil', '<iframe width="560" height="315" src="https://www.youtube.com/embed/b-zplVztmWI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n', '2018-10-08'),
-(4, 'Profil2', '<iframe width="560" height="315" src="https://www.youtube.com/embed/b-zplVztmWI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', '2018-10-09');
+(3, 'Profil', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/b-zplVztmWI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>\n', '2018-10-08'),
+(4, 'Profil2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/b-zplVztmWI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>', '2018-10-09');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ujian_masuk`
+--
+
+CREATE TABLE `ujian_masuk` (
+  `no_ujian` varchar(10) NOT NULL,
+  `no_reg` varchar(15) NOT NULL,
+  `ruang` varchar(10) NOT NULL,
+  `hasil` double NOT NULL,
+  `ket_ujian` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD PRIMARY KEY (`no_reg`);
+
+--
+-- Indexes for table `setup_slide`
+--
+ALTER TABLE `setup_slide`
+  ADD PRIMARY KEY (`id_slide`);
+
+--
+-- Indexes for table `tbberita`
+--
+ALTER TABLE `tbberita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `tbberita_kategori`
+--
+ALTER TABLE `tbberita_kategori`
+  ADD PRIMARY KEY (`id_ktg_berita`);
+
+--
+-- Indexes for table `tbgaleri_kategori`
+--
+ALTER TABLE `tbgaleri_kategori`
+  ADD PRIMARY KEY (`id_ktg_galeri`);
+
+--
+-- Indexes for table `tbguru`
+--
+ALTER TABLE `tbguru`
+  ADD PRIMARY KEY (`id_guru`);
+
+--
+-- Indexes for table `tbhackel`
+--
+ALTER TABLE `tbhackel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbjurusan`
+--
+ALTER TABLE `tbjurusan`
+  ADD PRIMARY KEY (`id_jurusan`);
+
+--
+-- Indexes for table `tbprestasi`
+--
+ALTER TABLE `tbprestasi`
+  ADD PRIMARY KEY (`id_prestasi`);
+
+--
+-- Indexes for table `tbprofil`
+--
+ALTER TABLE `tbprofil`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbsiswa`
+--
+ALTER TABLE `tbsiswa`
+  ADD PRIMARY KEY (`nis`);
+
+--
+-- Indexes for table `tbuser`
+--
+ALTER TABLE `tbuser`
+  ADD PRIMARY KEY (`iduser`);
+
+--
+-- Indexes for table `tbvideo`
+--
+ALTER TABLE `tbvideo`
+  ADD PRIMARY KEY (`id_video`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `setup_slide`
+--
+ALTER TABLE `setup_slide`
+  MODIFY `id_slide` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `tbberita_kategori`
+--
+ALTER TABLE `tbberita_kategori`
+  MODIFY `id_ktg_berita` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbgaleri_kategori`
+--
+ALTER TABLE `tbgaleri_kategori`
+  MODIFY `id_ktg_galeri` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbhackel`
+--
+ALTER TABLE `tbhackel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbjurusan`
+--
+ALTER TABLE `tbjurusan`
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tbprestasi`
+--
+ALTER TABLE `tbprestasi`
+  MODIFY `id_prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbprofil`
+--
+ALTER TABLE `tbprofil`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `tbuser`
+--
+ALTER TABLE `tbuser`
+  MODIFY `iduser` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `tbvideo`
+--
+ALTER TABLE `tbvideo`
+  MODIFY `id_video` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

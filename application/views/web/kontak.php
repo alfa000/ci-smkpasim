@@ -74,7 +74,7 @@
 					</div>
 					<div class="contact-me animated wow slideInUp form-group">
 						<label class="col-form-label">Message</label>
-						<textarea name="Message" class="form-control" placeholder="" required=""> </textarea>
+						<textarea name="Message" class="form-control" placeholder="" required="" rows="10"> </textarea>
 					</div>
 					<div class="contact-form">
 						<input type="submit" value="Submit">

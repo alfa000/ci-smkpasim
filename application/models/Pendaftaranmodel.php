@@ -18,6 +18,18 @@ class Pendaftaranmodel extends CI_Model
 		$siswa = $this->db->get('pendaftaran');
 		return $siswa->result();
 	}
+	function delete_pendaftaran($id){
+              $where = array('no_reg' => $id);
+              $hapus = $this->db->delete('pendaftaran', $where);
+              return $hapus;
+	}
+
+	function get_pendaftaran_by_id($id)
+	{
+		$this->db->where('no_reg', $id);
+		$siswa = $this->db->get('pendaftaran');
+		return $siswa->result();
+	}
 
 	function get_jml_pendaftaran()
 	{
@@ -59,4 +71,17 @@ class Pendaftaranmodel extends CI_Model
 		return $query->result();
 	}
 
+	public function update_pendaftaran($id, $data)
+	{
+		$this->db->where('no_reg', $id);
+		$update = $this->db->update('pendaftaran', $data);
+		return $update;
+	}
+	public function tampil_pendaftar(){
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->join('tbjurusan', 'pendaftaran.id_jurusan = tbjurusan.id_jurusan');
+		$result = $this->db->get()->result();
+		return $result;
+	}
 }

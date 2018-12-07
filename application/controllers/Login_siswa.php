@@ -5,15 +5,18 @@ class Login_siswa extends CI_Controller
 {
 	function __construct(){
   	 parent::__construct();
-  	  $this->load->model('loginmodel');
-	  $this->load->view('admin/layout/headerlogin');
-      $this->load->view('admin/layout/footerlogin');
+  	  $this->load->model(array('loginmodel', 'Jurusanmodel', 'Profilmodel'));
   	}
 	public function index()
 	{
-		$data['title'] = "HALAMAN LOGIN PESERTA DIDIK BARU";
-		$data['mod'] = "siswa";
-		$this->load->view('login/login_siswa', $data);
+		$home['jurusan'] = $this->Jurusanmodel->get_jurusan();
+		$home['profil'] = $this->Profilmodel->get_profil();
+		$home['mod'] = "siswa";
+	    $this->load->view('web/layout/header');
+		$this->load->view('web/layout/banner2');
+		$this->load->view('web/layout/navbar', $home);
+		$this->load->view('login/v_siswalogin');
+		$this->load->view('web/layout/footer');
 	}
 
 	function cek_login(){
@@ -28,13 +31,18 @@ class Login_siswa extends CI_Controller
 		  	 	$session_data['status'] = 'Online';
 		  	 	$session_data['no_reg'] = $key->no_reg;
 		  	 	$session_data['nm_siswa'] = $key->nm_siswa;
+		  	 	$session_data['ijazah'] = $key->ijazah;
 		  	 	$this->session->set_userdata($session_data);
 		  	 }
 		  	 if($this->session->userdata('status') == 'Online'){
-		  	 	redirect(base_url('siswa'));
+		  	 	if ($key->ijazah != NULL) {
+		  	 		redirect(base_url('siswa/profile'));
+		  	 	}else{
+		  	 		redirect(base_url('siswa'));	
+		  	 	}
 		  	 }
 		  }else{
-		  	 	//echo "<script>alert('Gagal Login: Cek ID pendaftaran , password!');history.go(-1);</script>";
+		  	 	echo "<script>alert('Gagal Login: Cek ID pendaftaran , password!');history.go(-1);</script>";
 		  }
 	}
 

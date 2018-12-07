@@ -54,7 +54,7 @@
 									</div>
 									<div class="col-lg-8 col-md-7 col-8 posts-grid-right mt-lg-0 mt-md-5 mt-sm-4">
 										<h4>
-											<a href="" class="text-dark"><?php echo $row->judul;?></a>
+											<a href="<?php echo base_url()?>detail/baca/<?php echo $row->slug;?>" class="text-dark"><?php echo $row->judul;?></a>
 										</h4>
 										<ul class="wthree_blog_events_list mt-2">
 											<li class="mr-2 text-dark">

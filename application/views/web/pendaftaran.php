@@ -61,6 +61,10 @@
 						<div class="post p-4 border">
 							<h3 class="blog-title text-dark">Form Pendaftaran Siswa Baru</h3>
 							<p>Lengkapi data berikut dengan benar. Data ini merupakan tahapan awal Pendaftaran Siswa Baru.</p>
+							<?php if(validation_errors()){?>
+								<b><?php echo validation_errors();?></b>
+							<?php }?>
+                           <?php echo $script_captcha; ?>
 							<div class="posts-grids">
 								<div class="contact-grids1 w3agile-6">
 									<form action="<?php echo base_url().'pendaftaran/registrasi'; ?>" method="POST" >
@@ -71,14 +75,27 @@
 										</div>
 										<div class="contact-form1 form-group">
 											<label class="col-form-label">NISN</label>
-											<input type="text" class="form-control" name="nisn" placeholder="Isi NISN yang valid" required="">
+											<input type="number" class="form-control" name="nisn" placeholder="Isi NISN yang valid" required="">
 										</div>
 										<div class="contact-form1 form-group">
-											<label class="col-form-label">Jenis Kelamin</label>
+											<label class="col-form-label">Jenis Kelamin </label>
 											<select name="jk" class="form-control" required="">
-												<option value="Laki-laki">Laki-laki</option>
-												<option value="Perempuan">Perempuan</option>
+											<option value="">--Pilih Jenis Kelamin--</option>
+											<option value="L">Laki-laki</option>
+											<option value="P">Perempuan</option>
 											</select>
+										</div>
+										<div class="contact-form1 form-group">
+											<label class="col-form-label">Jurusan </label>
+											<select name="jurusan" class="form-control" required="">
+											<option value="">--Pilih Jurusan--</option>
+											<?php foreach ($jurusan as $jrs): ?>
+												<option value="<?= $jrs->id_jurusan ?>"><?= $jrs->nm_jurusan ?></option>
+											<?php endforeach ?>
+											</select>
+										</div>
+										<div class="form-group">
+											<?php echo $captcha;?>
 										</div>
 										<div class="contact-form">
 											<input type="submit" value="DAFTAR">

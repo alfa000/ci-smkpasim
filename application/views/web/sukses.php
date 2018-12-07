@@ -30,7 +30,7 @@
 									if ($daftar) {
 										foreach ($daftar as $key ) { ?>
 											<p>Selamat anda Berhasil melakukan Pendaftaran Tahap Awal. <b>No Registrasi anda</b> adalah : <b><?php echo $key->no_reg ?></b> dan <b>Password anda</b> adalah : <b><?php echo $key->nisn ?></b>. Simpan baik- baik No Registrasi dan Password tersebut. Selanjutnya Login menggunakan No Registrasi dan Password yang sudah diberikan.</p>
-											<p>Klik disini untuk <a href="<?php echo base_url('backend/login/siswa') ?>" class="btn btn-primary">Login</a></p>
+											<p>Klik disini untuk <a href="<?php echo base_url('login_siswa') ?>" class="btn btn-primary">Login</a></p>
 								<?php
 										}
 									}

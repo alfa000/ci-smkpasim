@@ -60,11 +60,9 @@
 			<div class="row">
 				<div class="col-lg-7 video">
 					<h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">
-						<span class="font-weight-bold">video Profil Sekolah</span>
+						<span class="font-weight-bold">Live Streaming</span>
 					</h3>
-					<?php foreach ($video1 as $vd1): ?>
-						<?= $vd1->link_video ?>
-					<?php endforeach ?>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/live_stream?channel=UCD-l2DV1h2J_WNr3makYOuw" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<div class="col-lg-5 events">
 					<h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">
@@ -82,7 +80,7 @@
 								<h4 class="text-dark"><?= $vd->title ?> </h4>
 								<ul class="list-unstyled">
 									<li class="my-2">
-										<i class="far fa-youtube"></i><a href="https://www.youtube.com/channel/UCD-l2DV1h2J_WNr3makYOuw">Pasim Chanel</a>
+										<a href="https://www.youtube.com/channel/UCD-l2DV1h2J_WNr3makYOuw">Pasim Chanel</a>
 									</li>
 								</ul>
 							</div>
@@ -186,7 +184,7 @@
 							<!-- A slide container - this element is optional, if absent the plugin adds it automatically -->
 							<figure>
 								<!-- Slide content - whatever you want -->
-								<img src="<?= base_url('assets/upload/guru/').$gr->foto ?>" alt=" " class="img-fluid" />
+								<img src="<?= base_url('assets/upload/guru/').$gr->foto ?>" alt=" " class="img-fluid rounded-circle" />
 								<figcaption><?= $gr->nm_guru ?>
 									<span><?= $gr->mapel ?></span>
 								</figcaption>

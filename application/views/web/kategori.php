@@ -8,12 +8,21 @@
 			<div class="row blog-content pt-md-4">
 				<!-- left side -->
 				<div class="col-lg-8 blog_section">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<?php foreach($kat as $row){?>
+					<div class="card my-4">
+						<img class="card-img-top" src="<?php echo base_url()?>/assets/upload/berita/<?php echo $row->gambar?>" alt="">
+						<div class="card-body text-center">
+							<ul class="blog_list my-3">
+								<li class="fa fa-calendar mr-3"><?php echo $row->tgl_input?></li>
+							</ul>
+							<h5 class="card-title">
+								<a href="<?php echo base_url()?>detail/baca/<?php echo $row->slug?>" class="text-dark"><?php echo $row->judul?></a>
+							</h5>
+							<p class="card-text"><?php echo substr($row->konten, 0, 250)?></p>
+							<a href="<?php echo base_url()?>detail/baca/<?php echo $row->slug?>" class="btn btn-primary blog-button mt-3">Read More</a>
+						</div>	
+					</div>
+					<?php }?>
 				</div>
 				<!-- right side -->
 				<div class="col-lg-4 event-right mt-lg-0 mt-sm-5 mt-4">

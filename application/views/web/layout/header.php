@@ -22,6 +22,15 @@
 	<!-- Custom-Files -->
 	<!-- Bootstrap-Core-Css -->
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/bootstrap.css">
+	<!-- Style-Css -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/style.css" type="text/css" media="all" />
+	<!-- Font-Awesome-Icons-Css -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/fontawesome-all.css">
+	<!-- //Custom-Files -->
+	
+	<!-- Custom-Files -->
+	<!-- Bootstrap-Core-Css -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/bootstrap.css">
 	<!-- Testimonials-Css -->
 	<link href="<?= base_url(); ?>assets/web/css/mislider.css" rel="stylesheet" type="text/css" />
 	<link href="<?= base_url(); ?>assets/web/css/mislider-custom.css" rel="stylesheet" type="text/css" />

@@ -50,7 +50,7 @@ class Siswa extends CI_Controller
 					}
 				}
 	}
-function updatesiswa(){
+	function updatesiswa(){
 	 	$nis = $this->input->post('nis');
 		$foto_lama = $this->input->post('fotolama');
 
@@ -86,7 +86,7 @@ function updatesiswa(){
 		}
       
 	}
- function hapus_siswa($nis){
+ 	function hapus_siswa($nis){
 		$row = $this->Siswamodel->get_by_nis_siswa($nis);
 		if ($row) {
 			unlink('assets/upload/guru/'.$row->foto);
@@ -100,6 +100,7 @@ function updatesiswa(){
 			redirect(base_url('backend/siswa'));
 		}
 	}
+
 
 }
 

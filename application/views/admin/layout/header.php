@@ -21,4 +21,4 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-  <body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy">
+  <body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy" onload="document.getElementById('no_reg').focus();">

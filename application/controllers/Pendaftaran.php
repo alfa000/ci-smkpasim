@@ -7,14 +7,12 @@ class Pendaftaran extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model(array('Gurumodel','Siswamodel','Beritamodel','Galerimodel','Slidemodel','Pendaftaranmodel','Jurusanmodel','Profilmodel'));
-		$this->load->library(array('FPDF','upload'));
 		define('FPDF_FONTPATH', $this->config->item('fonts_path'));
 		
 	}
 
 	public function index()
 	{
-
 		$this->load->view('web/layout/header');
 		$home['slide'] = $this->Slidemodel->get_slide();
 		$home['jmlsiswa'] = $this->Siswamodel->get_jml_siswa();
@@ -27,40 +25,54 @@ class Pendaftaran extends CI_Controller {
 		$data['jurusan'] = $this->Jurusanmodel->get_jurusan();
 	    $data['profil'] = $this->Profilmodel->get_profil();
 	    $nomor['data']  = $this->Pendaftaranmodel->auto_inc();
+	    $nomor['captcha'] = $this->recaptcha->getWidget();
+	    $nomor['script_captcha'] = $this->recaptcha->getScriptTag();
 		$this->load->view('web/layout/banner2',$home);
 		$this->load->view('web/layout/navbar', $data);
-		$this->load->view('web/pendaftaran', $nomor);
+		$this->load->view('web/pendaftaran', $nomor,$data);
 		$this->load->view('web/layout/footer');
 
 	
 	}
-
 	public function registrasi()
 	{
-		if (empty($this->input->post('noreg'))) {
-			redirect('pendaftaran');
-		}
+		$this->form_validation->set_rules('noreg', 'Masukan No registrasi dengan Benar !', 'required');
+		$this->form_validation->set_rules('nama', 'Masukan Nama dengan Benar !', 'required|min_length[3]');
+		$this->form_validation->set_rules('nisn', 'Masukan No NISN dengan Benar !', 'required|min_length[10]');
+		$this->form_validation->set_rules('jk', 'Masukan Jenis Kelamin  dengan Benar !', 'required');
+		$this->form_validation->set_rules('jurusan', 'Masukan jurusan  dengan Benar !', 'required');
 
-		$noreg 	= $this->input->post('noreg');
-		$nama 	= $this->input->post('nama');
-		$nisn 	= $this->input->post('nisn');
-		$gender = $this->input->post('jk');
+		//$this->form_validation->set_rules('g-recaptcha-response', '', 'required');
+		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+		//$recaptcha = $this->input->post('g-recaptcha-response');
+        //$response = $this->recaptcha->verifyResponse($recaptcha);
+        //| !isset($response['success']) || $response['success'] <> true
+		 if($this->form_validation->run() == FALSE){
+		 	$this->index();
 
-		$data = array(
-			'no_reg' 	=> $noreg,
-			'nm_siswa' 	=> $nama,
-			'nisn' 		=> $nisn,
-			'jenkel' 	=> $gender,
-			'tgl_daftar' => date('Y-m-d'),
-		);
+		 }else{
+		 	$noreg 	= htmlspecialchars($this->input->post('noreg'));
+			$nama 	= htmlspecialchars($this->input->post('nama'));
+			$nisn 	= htmlspecialchars($this->input->post('nisn'));
+			$gender = htmlspecialchars($this->input->post('jk'));
+			$jurusan = htmlspecialchars($this->input->post('jurusan'));
+			$data = array(
+				'no_reg' 	=> $noreg,
+				'nm_siswa' 	=> $nama,
+				'nisn' 		=> $nisn,
+				'jenkel' 	=> $gender,
+				'id_jurusan' 	=> $jurusan,
+				'tgl_daftar' => date('Y-m-d'),
+			);
 
-		$input = $this->Pendaftaranmodel->insert_pendaftaran($data);
-		if ($input) {
-			$this->session->set_userdata($data);
-			redirect('pendaftaran/sukses/');
-		} else {
-			redirect('pendaftaran');
-		}
+			$input = $this->Pendaftaranmodel->insert_pendaftaran($data);
+			if ($input) {
+				$this->session->set_userdata($data);
+				redirect('pendaftaran/sukses/');
+			} else {
+				redirect('pendaftaran');
+			}
+		 }
 	}
 
 	public function sukses()
@@ -78,4 +90,6 @@ class Pendaftaran extends CI_Controller {
 		$this->load->view('web/sukses', $data);
 		$this->load->view('web/layout/footer');
 	}
+
 }
+?>
